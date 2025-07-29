@@ -1,12 +1,57 @@
-import { useDataFeatured } from "../hook/useData";
+'use client';
+
+import { useEffect, useState } from "react";
+import { useDataFeatured, useDataTrendingNow } from "../hook/useData";
 import { secondsToTime } from "../utils/secondsToTime";
 
-export default function FeaturedVideo() {
-    const data = useDataFeatured();
+type VideoData = {
+    Id: string;
+    Title: string;
+    CoverImage: string;
+    TitleImage: string;
+    Date: string;
+    ReleaseYear: string;
+    MpaRating: string;
+    Category: string;
+    Duration: string;
+    VideoUrl: string;
+    Description: string;
+};
 
-    if (!data) {
-        return <div className="w-full h-full flex items-center justify-center text-gray-500">Loading...</div>;
-    }
+export default function FeaturedVideo() {
+    const trendingData = useDataTrendingNow();
+    const featuredData = useDataFeatured();
+
+    const [data, setData] = useState<VideoData | null>(null);
+
+    useEffect(() => {
+        const updateSelectedVideo = () => {
+            const storedId = sessionStorage.getItem('selectedVideoId');
+
+            if (storedId) {
+                const video = trendingData.find(item => item.Id.toString() === storedId);
+                if (video) {
+                    setData(video);
+                    return;
+                }
+            }
+
+            setData(featuredData);
+        };
+
+        // Run on mount
+        updateSelectedVideo();
+
+        // Listen for event
+        window.addEventListener('selectedVideoIdChange', updateSelectedVideo);
+
+        return () => {
+            window.removeEventListener('selectedVideoIdChange', updateSelectedVideo);
+        };
+    }, [trendingData, featuredData]);
+
+
+    if (!data) return <div>Loading...</div>;
     const duration = secondsToTime(+data.Duration);
 
     return (
@@ -14,6 +59,23 @@ export default function FeaturedVideo() {
             className="w-full h-full bg-cover bg-center flex flex-col pl-4"
             style={{ backgroundImage: `url(${data.CoverImage})` }}
         >
+            {data?.VideoUrl ? (
+                <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute top-0 left-0 w-full h-full object-cover z-0"
+                >
+                    <source src={data.VideoUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            ) : (
+                <div
+                    className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
+                    style={{ backgroundImage: `url(${data?.CoverImage})` }}
+                />
+            )}
             <div className="mt-[200px]">
                 <p className="text-[36px] tracking-[7px] font-bold text-gray-500">MOVIE</p>
                 <img className=" h-[120px]" src={data.TitleImage} alt={data.Title} />

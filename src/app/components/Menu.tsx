@@ -20,7 +20,7 @@ export default function Menu() {
     ];
 
     return (
-        <div className={`fixed top-0 left-0 h-full z-100 transition-all duration-1000 ${isHovered ? 'w-[300vh] bg-gradient-to-r from-[#040404] to-transparent' : ''}`}>
+        <div className={`fixed top-0 left-0 h-full z-100 transition-colors duration-400 ${isHovered ? ' bg-gradient-to-r from-[#040404] to-transparent w-full' : 'w-[172px]'}`}>
             <div
                 className={`mt-[60px] pb-[65px] flex flex-col justify-between h-full pl-[32px] ${isHovered ? 'w-[400px]' : ' w-[172px] '}`}
                 onMouseEnter={() => setIsHovered(true)}
@@ -39,12 +39,12 @@ export default function Menu() {
                     }
                 </div>
                 <div
-                    className={`flex flex-col transition-all duration-600 ${isHovered ? 'w-[312px] gap-[30px]' : 'gap-[30px]'} mt-[-300px]`}
+                    className={`flex flex-col  w-[122px] transition-width duration-400 ${isHovered ? 'w-[312px] gap-[30px]' : 'gap-[30px]'} mt-[-300px]`}
                 >
                     {menuItems.map((item) => (
                         <div
                             key={item.label}
-                            className={`flex items-center rounded-xl gap-[50px] p-[36px] cursor-pointer h-[36px] hover:bg-[#858688] transition-colors duration-300`}
+                            className={`flex items-center rounded-xl gap-[50px] p-[36px] cursor-pointer h-[36px] hover:bg-[#858688]`}
                         >
                             <img src={item.icon} alt={item.label} />
                             {isHovered && (
