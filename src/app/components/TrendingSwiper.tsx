@@ -20,7 +20,7 @@ type SliderData = {
     MpaRating: string;
     Category: string;
     Duration: string;
-    VideoUrl: string;
+    VideoUrl: string | null;
     Description: string;
 };
 

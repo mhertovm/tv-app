@@ -14,7 +14,7 @@ type VideoData = {
     MpaRating: string;
     Category: string;
     Duration: string;
-    VideoUrl: string;
+    VideoUrl?: string | null;
     Description: string;
 };
 
@@ -57,7 +57,7 @@ export default function FeaturedVideo() {
     return (
         <div
             className="w-full h-full bg-cover bg-center flex flex-col pl-4"
-            style={{ backgroundImage: `url(${data.CoverImage})` }}
+            style={{ backgroundImage: !data?.VideoUrl ? `url(${data.CoverImage})` : undefined }}
         >
             {data?.VideoUrl ? (
                 <video
@@ -65,17 +65,12 @@ export default function FeaturedVideo() {
                     muted
                     loop
                     playsInline
-                    className="absolute top-0 left-0 w-full h-full object-cover z-0"
+                    className="absolute z-[-1]"
                 >
                     <source src={data.VideoUrl} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-            ) : (
-                <div
-                    className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
-                    style={{ backgroundImage: `url(${data?.CoverImage})` }}
-                />
-            )}
+            ) : undefined}
             <div className="mt-[200px]">
                 <p className="text-[36px] tracking-[7px] font-bold text-gray-500">MOVIE</p>
                 <img className=" h-[120px]" src={data.TitleImage} alt={data.Title} />
