@@ -74,7 +74,7 @@ export default function FeaturedVideo() {
                 className="w-full h-full bg-cover bg-center flex flex-col pl-4"
                 style={{ backgroundImage: !data?.VideoUrl ? `url(${data.CoverImage})` : undefined }}
             >
-                <div className="mt-[200px]">
+                <div className="mt-[200px] h-[160px]">
                     <p className="text-[36px] tracking-[7px] font-bold text-gray-500">MOVIE</p>
                     {data.TitleImage ? <img className=" h-[120px]" src={data.TitleImage} alt={data.Title} /> : <p className="text-[100px] font-bold">{data.Title}</p>}
                 </div>

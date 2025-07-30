@@ -26,7 +26,7 @@ export default function Menu() {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <div className="h-[82px]">
+                <div className="h-[82px] pb-[100px]">
                     {isHovered &&
                         <div className="cursor-pointer flex gap-[20px] flex-row items-center">
                             <img
@@ -39,7 +39,7 @@ export default function Menu() {
                     }
                 </div>
                 <div
-                    className={`flex flex-col  w-[122px] transition-width duration-400 ${isHovered ? 'w-[312px] gap-[30px]' : 'gap-[30px]'} mt-[-300px]`}
+                    className={`flex flex-col  w-[122px] transition-width duration-400 ${isHovered ? 'w-[312px] gap-[30px]' : 'gap-[30px]'} `}
                 >
                     {menuItems.map((item) => (
                         <div

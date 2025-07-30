@@ -10,9 +10,22 @@
 		"Category": "Movie",
 		"VideoUrl": null,
 		"Duration": "6000",
-		"Description": "Set across several decades, The Irishman tells the story of Frank Sheeran (Robert De Niro), a World War II veteran and truck driver who becomes a hitman for the Bufalino crime family. As Frank rises through the ranks of organized crime under mob boss Russell Bufalino (Joe Pesci), he forms a close friendship with powerful union leader Jimmy Hoffa (Al Pacino)."
+		"Description": "Info About it"
 	},
 	"TrendingNow": [
+		{
+			"Id": "0",
+			"Title": "The Irishman",
+			"CoverImage": "/assets/FeaturedCoverImage.png",
+			"TitleImage": "/assets/FeaturedTitleImage.png",
+			"Date": "2021-10-24T12:16:50.894556",
+			"ReleaseYear": "2021",
+			"MpaRating": "18+",
+			"Category": "Movie",
+			"VideoUrl": null,
+			"Duration": "6000",
+			"Description": "Info About it"
+		},
 		{
 			"Id": "1",
 			"Title": "Title 1",
