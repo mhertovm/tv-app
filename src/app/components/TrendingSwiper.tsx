@@ -39,7 +39,7 @@ export default function TrendingSwiper() {
                         className="!w-[200px]"
                     >
                         <div
-                            onClick={() => {
+                            onMouseEnter={() => {
                                 if (typeof window !== 'undefined') {
                                     sessionStorage.setItem('selectedVideoId', item.Id.toString());
                                     window.dispatchEvent(new Event('selectedVideoIdChange'));
