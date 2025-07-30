@@ -8,7 +8,7 @@ type VideoData = {
     Id: string;
     Title: string;
     CoverImage: string;
-    TitleImage: string;
+    TitleImage: string | null;
     Date: string;
     ReleaseYear: string;
     MpaRating: string;
@@ -76,7 +76,7 @@ export default function FeaturedVideo() {
             >
                 <div className="mt-[200px]">
                     <p className="text-[36px] tracking-[7px] font-bold text-gray-500">MOVIE</p>
-                    <img className=" h-[120px]" src={data.TitleImage} alt={data.Title} />
+                    {data.TitleImage ? <img className=" h-[120px]" src={data.TitleImage} alt={data.Title} /> : <p className="text-[100px] font-bold">{data.Title}</p>}
                 </div>
                 <div className="mt-[20px] text-[36px]">
                     <p className="inline-block mr-[50px]">{data.ReleaseYear}</p>

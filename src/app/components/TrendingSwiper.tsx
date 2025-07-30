@@ -14,7 +14,7 @@ type SliderData = {
     Id: string;
     Title: string;
     CoverImage: string;
-    TitleImage: string;
+    TitleImage: string | null;
     Date: string;
     ReleaseYear: string;
     MpaRating: string;
