@@ -25,6 +25,8 @@ export default function Menu() {
                 className={`mt-[60px] pb-[65px] flex flex-col justify-between h-full pl-[32px] ${isHovered ? 'w-[400px]' : ' w-[172px] '}`}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
+                onFocus={() => setIsHovered(true)}
+                onBlur={() => setIsHovered(false)}
             >
                 <div className="h-[82px] pb-[100px]">
                     {isHovered &&
