@@ -45,6 +45,12 @@ export default function TrendingSwiper() {
                                     window.dispatchEvent(new Event('selectedVideoIdChange'));
                                 }
                             }}
+                            onFocus={() => {
+                                if (typeof window !== 'undefined') {
+                                    sessionStorage.setItem('selectedVideoId', item.Id.toString());
+                                    window.dispatchEvent(new Event('selectedVideoIdChange'));
+                                }
+                            }}
                         >
                             <div className='h-[278px] w-full bg-cover bg-center cursor-pointer pl-[2px] pr-[2px]'
                                 style={{ backgroundImage: `url(${item.CoverImage})` }}
